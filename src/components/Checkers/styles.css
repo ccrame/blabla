@@ -1,7 +1,13 @@
 .board {
   display: flex;
+  width: 156px;
+  flex-wrap: wrap;
 }
 
 .square {
   border: 1px solid black;
+  display: inline-block;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
 }
