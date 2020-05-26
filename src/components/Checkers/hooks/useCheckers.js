@@ -44,7 +44,6 @@ function checkForWinner(board) {
 function playAMove(state, indexToPlay) {
   const { board, player } = state;
   const isValidMove = !board[indexToPlay];
-  const hasWinner = checkForWinner(board);
   const newPlayer = player === 1 ? 2 : 1;
 
   const newBoard = board.map((value, index) => {
@@ -52,6 +51,8 @@ function playAMove(state, indexToPlay) {
 
     return value;
   });
+
+  const hasWinner = checkForWinner(newBoard);
 
   return {
     ...state,
@@ -65,6 +66,9 @@ function reducer(state, action) {
   switch (action.type) {
     case "play_a_move":
       return playAMove(state, action.index);
+
+    case "reset_game":
+      return { ...initialState };
 
     default:
       return state;
